@@ -21,11 +21,13 @@ export const formatDateToLocal = (
   return formatter.format(date);
 };
 
-export const generateYAxis = (revenue: Revenue[]) => {
+export const generateYAxis = (revenue: Revenue[] | undefined) => {
   // Calculate what labels we need to display on the y-axis
   // based on highest record and in 1000s
   const yAxisLabels = [];
-  const highestRecord = Math.max(...revenue.map((month) => month.revenue));
+  // if ()
+  const highestRecord = revenue!==undefined ? Math.max(...revenue.map((month) => month.revenue)) : 0;
+  
   const topLabel = Math.ceil(highestRecord / 1000) * 1000;
 
   for (let i = topLabel; i >= 0; i -= 1000) {
@@ -33,6 +35,7 @@ export const generateYAxis = (revenue: Revenue[]) => {
   }
 
   return { yAxisLabels, topLabel };
+
 };
 
 export const generatePagination = (currentPage: number, totalPages: number) => {
