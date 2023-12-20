@@ -35,7 +35,6 @@ export const generateYAxis = (revenue: Revenue[] | undefined) => {
   }
 
   return { yAxisLabels, topLabel };
-
 };
 
 export const generatePagination = (currentPage: number, totalPages: number) => {
